@@ -1,0 +1,7 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Minesweeper,default,Board,20,0,0,0,6,0,2,0,2,0
+Minesweeper,default,Number,16,0,0,0,6,0,3,0,3,0
+Minesweeper,default,Mine,6,0,0,0,2,0,1,0,1,0
+Minesweeper,default,Tile,26,15,0,0,9,6,6,2,6,2
+Minesweeper,default,Flag,6,0,0,0,2,0,1,0,1,0
+Minesweeper,default,Main,110,0,14,0,21,0,9,0,2,0
