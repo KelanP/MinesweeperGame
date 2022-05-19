@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Board {
     private int rows = 6;
     private int columns = 6;
-    private int mines = 15;
+    private int mines = 10;
 
     public void setRows(int rows) {
         this.rows = rows;
@@ -146,6 +146,7 @@ public class Board {
         Board board = new Board();
 
         System.out.print("Welcome to Minesweeper!\n");
+        /*
         System.out.print("Select you difficulty- Easy, Medium or Hard: ");
         String userDifficulty = scanner.nextLine();
         if (userDifficulty.equalsIgnoreCase("easy") || userDifficulty.equalsIgnoreCase("e")) {
@@ -163,6 +164,8 @@ public class Board {
             board.setRows(9);
             board.setColumns(9);
             board.setMines(25);}
+
+         */
 
         System.out.println(board.createBoard());
 
