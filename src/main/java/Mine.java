@@ -4,10 +4,9 @@ public class Mine extends Tile {
 
     //constructor
 
-    public Mine(int positionRow, int positionColumn, boolean hidden) {
-        super(positionRow, positionColumn, hidden);
+    public Mine(int positionRow, int positionColumn,int value, boolean hidden,boolean isMine, boolean isFlagged) {
+        super(positionRow, positionColumn,value, hidden,isMine,isFlagged);
     }
-
 
     //methods
 }

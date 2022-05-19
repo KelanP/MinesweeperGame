@@ -5,8 +5,8 @@ public class Number extends Tile {
 
     //constructor
 
-    public Number(int positionRow, int positionColumn, boolean hidden, int neighbouringMines) {
-        super(positionRow, positionColumn, hidden);
+    public Number(int positionRow, int positionColumn,int value ,boolean hidden, boolean isMine, boolean isFlagged, int neighbouringMines) {
+        super(positionRow, positionColumn,value,hidden,isMine,isFlagged);
 
         this.neighbouringMines = neighbouringMines;
     }
