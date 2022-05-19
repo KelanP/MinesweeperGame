@@ -5,7 +5,7 @@ public class TileTest {
 
     @Test
     public void testTileCreation(){
-        Tile test = new Tile(0,0,"0",false,false,false);
+        Tile test = new Tile(0,0,"0","?",false,false,false);
         Assertions.assertEquals(0,test.getPositionRow(),"Position of row incorrect");
 
     }

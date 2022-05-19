@@ -1,5 +1,6 @@
 public class Tile {
 
+    private String display;
     //attributes
     private int positionRow;
     private int positionColumn;
@@ -10,10 +11,11 @@ public class Tile {
 
     //constructor
 
-    public Tile(int positionRow, int positionColumn,String value, boolean hidden, boolean isMine, boolean isFlagged) {
+    public Tile(int positionRow, int positionColumn,String value,String display, boolean hidden, boolean isMine, boolean isFlagged) {
         this.positionRow = positionRow;
         this.positionColumn = positionColumn;
         this.value = value;
+        this.display = display;
         this.hidden = hidden;
         this.isMine = isMine;
         this.isFlagged = isFlagged;
@@ -24,6 +26,16 @@ public class Tile {
     public void mineIcon(){
         if(Tile.this.isMine=true){
             Tile.this.setValue("x"); //sets value to unicode bomb character💣
+        }
+    }
+    public void hideTile(){
+        if(Tile.this.isHidden()==true){
+            Tile.this.setDisplay("?");
+        }
+    }
+    public void showTile(){
+        if(Tile.this.isHidden()==false){
+            Tile.this.setDisplay(Tile.this.getValue());
         }
     }
 
@@ -69,6 +81,13 @@ public class Tile {
         isFlagged = flagged;
     }
 
+    public String getDisplay() {
+        return display;
+    }
+    public void setDisplay(String display) {
+        this.display = display;
+    }
+
     public String getValue() {
         return value;
     }
@@ -91,5 +110,8 @@ public class Tile {
 
     public String toStringValue() {
         return " " + value + " ";
+    }
+    public String toStringDisplay() {
+        return " " + display + " ";
     }
 }
