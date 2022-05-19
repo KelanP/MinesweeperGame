@@ -3,14 +3,14 @@ public class Tile {
     //attributes
     private int positionRow;
     private int positionColumn;
-    private int value;
+    private String value;
     private boolean hidden;
     private boolean isMine;
     private boolean isFlagged;
 
     //constructor
 
-    public Tile(int positionRow, int positionColumn,int value, boolean hidden, boolean isMine, boolean isFlagged) {
+    public Tile(int positionRow, int positionColumn,String value, boolean hidden, boolean isMine, boolean isFlagged) {
         this.positionRow = positionRow;
         this.positionColumn = positionColumn;
         this.value = value;
@@ -21,6 +21,11 @@ public class Tile {
 
 
     //methods
+    public void mineIcon(){
+        if(Tile.this.isMine=true){
+            Tile.this.setValue("x"); //sets value to unicode bomb character💣
+        }
+    }
 
     //getters and setters
 
@@ -64,11 +69,11 @@ public class Tile {
         isFlagged = flagged;
     }
 
-    public int getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
