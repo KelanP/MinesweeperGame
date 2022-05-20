@@ -15,6 +15,26 @@ public class TileTest {
         Assertions.assertEquals(true,testTile.isFlagged(),"Incorrect boolean for flag");
     }
 
+    @Test
+    public void testSetters(){
+        Tile tileSetter = new Tile(5,6,null,"?",true,true,false);
+        tileSetter.setPositionRow(1);
+        Assertions.assertEquals(1,tileSetter.getPositionRow(),"row wrong");
+        tileSetter.setPositionColumn(2);
+        Assertions.assertEquals(2,tileSetter.getPositionColumn(),"column wrong");
+        tileSetter.setValue("x");
+        Assertions.assertEquals("x",tileSetter.getValue(),"value wrong");
+        tileSetter.setDisplay("F");
+        Assertions.assertEquals("F",tileSetter.getDisplay(),"display value wrong");
+        tileSetter.setHidden(false);
+        Assertions.assertEquals(false, tileSetter.isHidden(),"Incorrect boolean for hidden");
+        tileSetter.setMine(false);
+        Assertions.assertEquals(false, tileSetter.isMine(),"Incorrect boolean for mine");
+        tileSetter.setFlagged(true);
+        Assertions.assertEquals(true,tileSetter.isFlagged(),"Incorrect boolean for flag");
+
+    }
+
 
 
 }
