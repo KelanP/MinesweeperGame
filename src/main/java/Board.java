@@ -187,11 +187,12 @@ public class Board {
         Scanner scanner = new Scanner(System.in);
         Board board = new Board();
         board.createBoard();
+        System.out.println("There are " + board.mineCounter() +" mines");
         System.out.println(board.createBoard());
 
         while (true) {
 
-            System.out.print("Would you like to place a flag (type- f) or reveal a tile(type- r): ");
+            System.out.print("Would you like to place a flag (type- f) or reveal a tile (type- r): ");
             String flagOrTile = scanner.nextLine();
             System.out.print("Enter desired row between 1 and " + board.rows + ": ");
             int userSelectedRow = scanner.nextInt();
@@ -203,7 +204,7 @@ public class Board {
                 System.out.println(board.returnBoard());
                 String minusLine = scanner.nextLine(); //gets rid of the additional 'buffer line'
 
-            } else if (flagOrTile.equalsIgnoreCase("r") || flagOrTile.equalsIgnoreCase("r")) { //user reveals a tile
+            } else if (flagOrTile.equalsIgnoreCase("r") || flagOrTile.equalsIgnoreCase("reveal")) { //user reveals a tile
                 board.tileArray[userSelectedRow - 1][userSelectedColumn - 1].setHidden(false);
                 board.tileArray[userSelectedRow - 1][userSelectedColumn - 1].showTile();
                 String minusLine = scanner.nextLine(); //gets rid of the additional 'buffer line'
@@ -224,6 +225,7 @@ public class Board {
                     System.out.println("YOU WIN! :)");
                     System.exit(0);
                 } else if (board.tileArray[userSelectedRow - 1][userSelectedColumn - 1].getValue().equalsIgnoreCase("0")) {
+
 
                     int row = userSelectedRow - 1;
                     int col = userSelectedColumn - 1;
@@ -291,7 +293,11 @@ public class Board {
                     System.out.println(board.returnBoard());
                 } else {
                     System.out.println(board.returnBoard());
+
+
                 }
+
+
             }
 
         }

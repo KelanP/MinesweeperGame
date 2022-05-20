@@ -5,8 +5,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Board board = new Board();
         System.out.print("Select you difficulty- Easy, Medium or Hard: ");
+
         String userDifficulty = scanner.nextLine();
         if (userDifficulty.equalsIgnoreCase("easy") || userDifficulty.equalsIgnoreCase("e")) {
+
             board.setRows(5);
             board.setColumns(5);
             board.setMines(5);
@@ -19,9 +21,10 @@ public class Main {
             System.out.println("YOU HAVE CHOSEN PAIN");
             board.setRows(9);
             board.setColumns(9);
-            board.setMines(28);
+            board.setMines(30);
         }
         Board.game();
+
 
     }
 }
