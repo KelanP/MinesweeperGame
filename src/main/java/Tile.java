@@ -28,11 +28,7 @@ public class Tile {
             Tile.this.setValue("x"); //sets value to unicode bomb character💣
         }
     }
-    public void hideTile(){
-        if(Tile.this.isHidden()){
-            Tile.this.setDisplay("?");
-        }
-    }
+
     public void showTile(){
         if(!Tile.this.isHidden()){
             Tile.this.setDisplay(Tile.this.getValue());

@@ -50,6 +50,17 @@ public class TileTest {
 
     }
 
+    @Test
+    public void testMethods(){
+        Tile tileMethods = new Tile(5,6,"5","F",true,true,true);
+        tileMethods.mineIcon();
+        Assertions.assertEquals("x",tileMethods.getValue(),"mine icon wrong");
+        tileMethods.setHidden(false);
+        tileMethods.showTile();
+        Assertions.assertEquals(tileMethods.getValue(),tileMethods.getDisplay(),"show tile method not working correctly");
+
+    }
+
 
 
 }
