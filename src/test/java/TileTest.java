@@ -35,6 +35,21 @@ public class TileTest {
 
     }
 
+    @Test
+    public void testToString(){
+        Tile tileToString = new Tile(5,6,null,"?",true,true,false);
+        Assertions.assertEquals("Tile{" + "positionRow=" + tileToString.getPositionRow() +
+                ", positionColumn=" + tileToString.getPositionColumn() +
+                ", value=" + tileToString.getValue() +
+                ", hidden=" + tileToString.isHidden() +
+                ", isMine=" + tileToString.isMine() +
+                ", isFlagged=" + tileToString.isFlagged() +
+                '}', tileToString.toString(), "toString not created correctly");
+        Assertions.assertEquals(" " + tileToString.getDisplay() + " ",tileToString.toStringDisplay(),"toStringDisplay not working");
+        Assertions.assertEquals(" "+tileToString.getValue()+" ",tileToString.toStringValue());
+
+    }
+
 
 
 }

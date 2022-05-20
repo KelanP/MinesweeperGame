@@ -24,7 +24,7 @@ public class Tile {
 
     //methods
     public void mineIcon(){
-        if(Tile.this.isMine=true){
+        if(Tile.this.isMine()){
             Tile.this.setValue("x"); //sets value to unicode bomb character💣
         }
     }
