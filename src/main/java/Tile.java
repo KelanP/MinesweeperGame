@@ -29,12 +29,12 @@ public class Tile {
         }
     }
     public void hideTile(){
-        if(Tile.this.isHidden()==true){
+        if(Tile.this.isHidden()){
             Tile.this.setDisplay("?");
         }
     }
     public void showTile(){
-        if(Tile.this.isHidden()==false){
+        if(!Tile.this.isHidden()){
             Tile.this.setDisplay(Tile.this.getValue());
         }
     }
@@ -108,10 +108,13 @@ public class Tile {
                 '}';
     }
 
-    public String toStringValue() {
-        return " " + value + " ";
-    }
+
     public String toStringDisplay() {
         return " " + display + " ";
     }
+
+    public String toStringValue() {
+        return " " + value + " ";
+    }
+
 }

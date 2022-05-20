@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 public class Board {
-    private int rows = 5;
-    private int columns = 5;
-    private int mines = 1;
+    private static int rows;
+    private static int columns;
+    private static int mines;
 
     public void setRows(int rows) {
         this.rows = rows;
@@ -31,7 +31,7 @@ public class Board {
     public void initialiseTiles() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                tileArray[i][j] = new Tile(i, j, "0", "?" ,true, false, false); //assigns each tile its relative position and sets it hidden
+                tileArray[i][j] = new Tile(i, j, "0", "?", true, false, false); //assigns each tile its relative position and sets it hidden
 
             }
         }
@@ -46,56 +46,63 @@ public class Board {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                if (tileArray[i][j].isMine() == false){
+                if (tileArray[i][j].isMine() == false) {
                     int count = 0;
                     int row = tileArray[i][j].getPositionRow();
                     int col = tileArray[i][j].getPositionColumn();
                     //top left
-                    if ((row-1)>=0 && (col-1)>=0){
-                        if (tileArray[row-1][col-1].isMine()==true){
-                            count=+1;}
+                    if ((row - 1) >= 0 && (col - 1) >= 0) {
+                        if (tileArray[row - 1][col - 1].isMine() == true) {
+                            count = +1;
+                        }
                     }
                     //above
-                    if (row-1>=0){
-                        if (tileArray[row-1][col].isMine()==true){
-                            count+=1;}
+                    if (row - 1 >= 0) {
+                        if (tileArray[row - 1][col].isMine() == true) {
+                            count += 1;
+                        }
                     }
                     //top right
-                    if ((row-1)>=0 && (col+1)<=columns-1){
-                        if (tileArray[row-1][col+1].isMine()==true){
-                            count+=1;}
+                    if ((row - 1) >= 0 && (col + 1) <= columns - 1) {
+                        if (tileArray[row - 1][col + 1].isMine() == true) {
+                            count += 1;
+                        }
                     }
                     //left
-                    if ((col-1)>=0){
-                        if(tileArray[row][col-1].isMine()==true){
-                            count+=1;}
+                    if ((col - 1) >= 0) {
+                        if (tileArray[row][col - 1].isMine() == true) {
+                            count += 1;
+                        }
                     }
                     //right
-                    if ((col+1)<=columns-1){
-                        if (tileArray[row][col+1].isMine()==true){
-                            count+=1;}
+                    if ((col + 1) <= columns - 1) {
+                        if (tileArray[row][col + 1].isMine() == true) {
+                            count += 1;
+                        }
                     }
                     //bottom left
-                    if ((row+1)<=rows-1 && (col-1)>=0){
-                        if (tileArray[row+1][col-1].isMine()==true)
-                            count+=1;
+                    if ((row + 1) <= rows - 1 && (col - 1) >= 0) {
+                        if (tileArray[row + 1][col - 1].isMine() == true)
+                            count += 1;
                     }
                     //below
-                    if ((row+1)<=rows-1){
-                        if (tileArray[row+1][col].isMine()==true){
-                            count+=1;}
+                    if ((row + 1) <= rows - 1) {
+                        if (tileArray[row + 1][col].isMine() == true) {
+                            count += 1;
+                        }
                     }
                     //bottom right
-                    if ((row+1)<=rows-1 && (col+1)<=columns-1){
-                        if (tileArray[row+1][col+1].isMine()==true){
-                            count+=1;}
+                    if ((row + 1) <= rows - 1 && (col + 1) <= columns - 1) {
+                        if (tileArray[row + 1][col + 1].isMine() == true) {
+                            count += 1;
+                        }
                     }
                     tileArray[i][j].setValue(Integer.toString(count));
 
 
-
+                } else {
+                    continue;
                 }
-                else {continue;}
 
 
             }
@@ -128,11 +135,11 @@ public class Board {
 
     }
 
-    public int mineCounter(){
+    public int mineCounter() {
         int count = 0;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                if (this.tileArray[i][j].isMine()==true){
+                if (this.tileArray[i][j].isMine() == true) {
                     count++;
                 }
 
@@ -155,7 +162,7 @@ public class Board {
     }
 
 
-    public String returnBoard(){
+    public String returnBoard() {
         String strBoard = "";
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
@@ -175,51 +182,28 @@ public class Board {
         return strBoard;
     }
 
-    public static void game(){
+    public static void game() {
 
-        Scanner scanner =new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         Board board = new Board();
-
-        System.out.print("Welcome to Minesweeper!\n");
-        /*
-        System.out.print("Select you difficulty- Easy, Medium or Hard: ");
-        String userDifficulty = scanner.nextLine();
-        if (userDifficulty.equalsIgnoreCase("easy") || userDifficulty.equalsIgnoreCase("e")) {
-            board.setRows(5);
-            board.setColumns(5);
-            board.setMines(5);
-        }
-        else if (userDifficulty.equalsIgnoreCase("medium") || userDifficulty.equalsIgnoreCase("m")){
-            board.setRows(9);
-            board.setColumns(9);
-            board.setMines(15);
-        }
-        else {
-            System.out.println("YOU HAVE CHOSEN PAIN");
-            board.setRows(9);
-            board.setColumns(9);
-            board.setMines(25);}
-
-         */
-
+        board.createBoard();
         System.out.println(board.createBoard());
 
-        while(true) {
+        while (true) {
 
             System.out.print("Would you like to place a flag (type- f) or reveal a tile(type- r): ");
             String flagOrTile = scanner.nextLine();
-            System.out.print("Enter desired row between 1 and "+ board.rows +": ");
+            System.out.print("Enter desired row between 1 and " + board.rows + ": ");
             int userSelectedRow = scanner.nextInt();
-            System.out.print("Enter desired column between 1 and "+ board.columns+": ");
+            System.out.print("Enter desired column between 1 and " + board.columns + ": ");
             int userSelectedColumn = scanner.nextInt();
 
-            if (flagOrTile.equalsIgnoreCase("f")||flagOrTile.equalsIgnoreCase("flag")){ //user chooses to place flag, tile is displayed as F
-                board.tileArray[userSelectedRow-1][userSelectedColumn-1].setDisplay("F");
+            if (flagOrTile.equalsIgnoreCase("f") || flagOrTile.equalsIgnoreCase("flag")) { //user chooses to place flag, tile is displayed as F
+                board.tileArray[userSelectedRow - 1][userSelectedColumn - 1].setDisplay("F");
                 System.out.println(board.returnBoard());
                 String minusLine = scanner.nextLine(); //gets rid of the additional 'buffer line'
 
-            }
-            else if (flagOrTile.equalsIgnoreCase("r")||flagOrTile.equalsIgnoreCase("r")) { //user reveals a tile
+            } else if (flagOrTile.equalsIgnoreCase("r") || flagOrTile.equalsIgnoreCase("r")) { //user reveals a tile
                 board.tileArray[userSelectedRow - 1][userSelectedColumn - 1].setHidden(false);
                 board.tileArray[userSelectedRow - 1][userSelectedColumn - 1].showTile();
                 String minusLine = scanner.nextLine(); //gets rid of the additional 'buffer line'
@@ -235,85 +219,84 @@ public class Board {
                     System.out.println(board.returnBoard());
                     System.out.println("You hit a mine! RIP");
                     System.exit(0);
-                }
-
-
-                 else if (board.mineCounter()==((board.getRows()*board.getColumns()) -board.revealedTileCount())) { //if all non-mine tiles are revealed: user wins
+                } else if (board.mineCounter() == ((board.getRows() * board.getColumns()) - board.revealedTileCount())) { //if all non-mine tiles are revealed: user wins
                     System.out.println(board.returnBoard());
                     System.out.println("YOU WIN! :)");
                     System.exit(0);
-                }
-                 else if (board.tileArray[userSelectedRow-1][userSelectedColumn-1].getValue().equalsIgnoreCase("0")) {
+                } else if (board.tileArray[userSelectedRow - 1][userSelectedColumn - 1].getValue().equalsIgnoreCase("0")) {
 
-                            int row = userSelectedRow-1;
-                            int col = userSelectedColumn-1;
-                            //top left
-                            if ((row - 1) >= 0 && (col - 1) >= 0) {
-                                if (board.tileArray[row - 1][col - 1].isMine() == false) {
-                                    board.tileArray[row-1][col-1].setHidden(false);
-                                    board.tileArray[row-1][col-1].showTile();
-                                }
+                    int row = userSelectedRow - 1;
+                    int col = userSelectedColumn - 1;
+                    //top left
+                    if ((row - 1) >= 0 && (col - 1) >= 0) {
+                        if (board.tileArray[row - 1][col - 1].isMine() == false) {
+                            board.tileArray[row - 1][col - 1].setHidden(false);
+                            board.tileArray[row - 1][col - 1].showTile();
+                        }
+                    }
+                    //above
+                    if (row - 1 >= 0) {
+                        if (board.tileArray[row - 1][col].isMine() == false) {
+                            board.tileArray[row - 1][col].setHidden(false);
+                            board.tileArray[row - 1][col].showTile();
+                            if (board.tileArray[row - 1][col].getValue().equalsIgnoreCase("0")) {
+
                             }
-                            //above
-                            if (row - 1 >= 0) {
-                                if (board.tileArray[row - 1][col].isMine() == false) {
-                                    board.tileArray[row-1][col].setHidden(false);
-                                    board.tileArray[row-1][col].showTile();
-                                }
-                            }
-                            //top right
-                            if ((row - 1) >= 0 && (col + 1) <= board.getColumns() - 1) {
-                                if (board.tileArray[row - 1][col + 1].isMine() == false) {
-                                    board.tileArray[row-1][col+1].setHidden(false);
-                                    board.tileArray[row-1][col+1].showTile();
-                                }
-                            }
-                            //left
-                            if ((col - 1) >= 0) {
-                                if (board.tileArray[row][col - 1].isMine() == false) {
-                                    board.tileArray[row][col-1].setHidden(false);
-                                    board.tileArray[row][col-1].showTile();
-                                }
-                            }
-                            //right
-                            if ((col + 1) <= board.getColumns() - 1) {
-                                if (board.tileArray[row][col + 1].isMine() == false) {
-                                    board.tileArray[row][col+1].setHidden(false);
-                                    board.tileArray[row][col+1].showTile();
-                                }
-                            }
-                            //bottom left
-                            if ((row + 1) <= board.getRows() - 1 && (col - 1) >= 0) {
-                                if (board.tileArray[row + 1][col - 1].isMine() == false) {
-                                    board.tileArray[row + 1][col - 1].setHidden(false);
-                                    board.tileArray[row + 1][col - 1].showTile();
-                                }
-                            }
-                            //below
-                            if ((row + 1) <= board.getRows() - 1) {
-                                if (board.tileArray[row + 1][col].isMine() == false) {
-                                    board.tileArray[row + 1][col].setHidden(false);
-                                    board.tileArray[row + 1][col].showTile();
-                                }
-                            }
-                            //bottom right
-                            if ((row + 1) <= board.getRows() - 1 && (col + 1) <= board.getColumns() - 1) {
-                                if (board.tileArray[row + 1][col + 1].isMine() == false) {
-                                    board.tileArray[row + 1][col + 1].setHidden(false);
-                                    board.tileArray[row + 1][col + 1].showTile();
-                                }
-                            }
+                        }
+                    }
+                    //top right
+                    if ((row - 1) >= 0 && (col + 1) <= board.getColumns() - 1) {
+                        if (board.tileArray[row - 1][col + 1].isMine() == false) {
+                            board.tileArray[row - 1][col + 1].setHidden(false);
+                            board.tileArray[row - 1][col + 1].showTile();
+                        }
+                    }
+                    //left
+                    if ((col - 1) >= 0) {
+                        if (board.tileArray[row][col - 1].isMine() == false) {
+                            board.tileArray[row][col - 1].setHidden(false);
+                            board.tileArray[row][col - 1].showTile();
+                        }
+                    }
+                    //right
+                    if ((col + 1) <= board.getColumns() - 1) {
+                        if (board.tileArray[row][col + 1].isMine() == false) {
+                            board.tileArray[row][col + 1].setHidden(false);
+                            board.tileArray[row][col + 1].showTile();
+                        }
+                    }
+                    //bottom left
+                    if ((row + 1) <= board.getRows() - 1 && (col - 1) >= 0) {
+                        if (board.tileArray[row + 1][col - 1].isMine() == false) {
+                            board.tileArray[row + 1][col - 1].setHidden(false);
+                            board.tileArray[row + 1][col - 1].showTile();
+                        }
+                    }
+                    //below
+                    if ((row + 1) <= board.getRows() - 1) {
+                        if (board.tileArray[row + 1][col].isMine() == false) {
+                            board.tileArray[row + 1][col].setHidden(false);
+                            board.tileArray[row + 1][col].showTile();
+                        }
+                    }
+                    //bottom right
+                    if ((row + 1) <= board.getRows() - 1 && (col + 1) <= board.getColumns() - 1) {
+                        if (board.tileArray[row + 1][col + 1].isMine() == false) {
+                            board.tileArray[row + 1][col + 1].setHidden(false);
+                            board.tileArray[row + 1][col + 1].showTile();
+                        }
+                    }
 
 
                     System.out.println(board.returnBoard());
+                } else {
+                    System.out.println(board.returnBoard());
                 }
-
-                 else{
-                    System.out.println(board.returnBoard());}
             }
 
         }
     }
 
-
 }
+
+
